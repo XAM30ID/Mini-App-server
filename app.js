@@ -1,11 +1,6 @@
 const mysql = require("mysql2");
 const express = require("express");
 
-res.render('../views/contacts', {user: user})
-res.render('../views/meets', {user: user})
-res.render('../views/index', {user: user})
-
-
 const app = express();
 const urlencodedParser = express.urlencoded({ extended: true });
 
