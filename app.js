@@ -1,5 +1,7 @@
 const mysql = require("mysql2");
 const express = require("express");
+const port = process.env.PORT || 4000;
+
 
 const app = express();
 const urlencodedParser = express.urlencoded({ extended: true });
@@ -40,6 +42,6 @@ app.get("/", urlencodedParser, function (req, res) {
 });
 
 
-app.listen(3000, function () {
+app.listen(port, function () {
     console.log("Сервер запущен на http://localhost:3000");
 });
