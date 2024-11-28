@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="/css/meetsStyle.css">
+    <title></title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo"></div>
+
+            <div class="header__nav nav">
+                <div class="nav__item"><a href="/" class="nav__text">Задачи</a></div>
+                <div class="nav__item"><a href="/contacts" class="nav__text">Контакты</a></div>
+                <div class="nav__item nav__item_active"><a href="/meeting" class="nav__text">Встречи</a></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="main-list">
+        <div class="main-list__container">
+            {{#each task}}
+                <div class="main-list__item item">
+                    <div class="item__left-part">
+                        <div class="item__title">{{this.title}}</div>
+                        <div class="item__owner">{{this.owner}}</div>
+                    </div>
+                    <div class="item__right-part">
+                        <div class="item__place">{{this.location}}</div>
+                        <div class="item__dates">{{this.start_time}} - {{this.end_time}}</div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+</body>
+</html>
