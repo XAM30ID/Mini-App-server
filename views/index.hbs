@@ -5,24 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/mainStyle.css">
     <link rel="stylesheet" href="/css/tasksStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="/js/test.js"></script>
     <title></title>
 </head>
 
 <body>
     <header class="header">
         <div class="header__container">
-            <div class="header__logo"></div>
+            <div class="header__logo">CRM AI Mini App</div>
 
             <div class="header__nav nav">
-                <div class="nav__item nav__item_active"><a href="/" class="nav__text">Задачи</a></div>
-                <div class="nav__item"><a href="/contacts" class="nav__text">Контакты</a></div>
-                <div class="nav__item"><a href="/meeting" class="nav__text">Встречи</a></div>
+                {{!-- <form action="tasks/{{userId}}" class="header__form" method="post">
+                    <button id="name" class="nav__item">
+                        Задачи
+                    </button>
+                 </form>
+                 <form action="contacts/{{userId}}" class="header__form" method="post">
+                    <button id="name" class="nav__item">
+                        Контакты
+                    </button>
+                 </form>
+                 <form action="meets/{{userId}}" class="header__form" method="post">
+                    <button id="name" class="nav__item">
+                        Встречи
+                    </button>
+                 </form> --}}
+                    <div class="nav__item nav__item_active"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
+                    <div class="nav__item"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
+                    <div class="nav__item"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
             </div>
         </div>
     </header>
 
-    <section class="main-list">
+    <section class="main-list__tasks">
         <div class="main-list__container">
             {{#each task}}
                 <div class="main-list__item item">
@@ -39,10 +56,37 @@
             {{/each}}
         </div>
     </section>
-</body>
 
-<script>
-    const tg = window.Telegram.WebApp;
-    console.debug(tg);
-</script>
+    <section class="main-list__contacts">
+        <div class="main-list__container">
+            {{#each task}}
+                <div class="main-list__item item">
+                    <div class="item__left-part">
+                        <div class="item__name">{{this.name}}</div>
+                    </div>
+                    <div class="item__right-part">
+                        <div class="item__number">{{this.phone}}</div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+
+    <section class="main-list__meets">
+        <div class="main-list__container">
+            {{#each task}}
+                <div class="main-list__item item">
+                    <div class="item__left-part">
+                        <div class="item__title">{{this.title}}</div>
+                        <div class="item__owner">{{this.owner}}</div>
+                    </div>
+                    <div class="item__right-part">
+                        <div class="item__place">{{this.location}}</div>
+                        <div class="item__dates">{{this.start_time}} - {{this.end_time}}</div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+</body>
 </html>

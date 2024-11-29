@@ -11,12 +11,27 @@
 <body>
     <header class="header">
         <div class="header__container">
-            <div class="header__logo"></div>
+            <div class="header__logo">CRM AI Mini App</div>
 
             <div class="header__nav nav">
-                <div class="nav__item"><a href="/" class="nav__text">Задачи</a></div>
-                <div class="nav__item"><a href="/contacts" class="nav__text">Контакты</a></div>
-                <div class="nav__item nav__item_active"><a href="/meeting" class="nav__text">Встречи</a></div>
+                {{!-- <form action="tasks/{{userId}}" class="header__form" method="post">
+                    <button id="name" class="nav__item">
+                        Задачи
+                    </button>
+                 </form>
+                 <form action="contacts/{{userId}}" class="header__form" method="post">
+                    <button id="name" class="nav__item">
+                        Контакты
+                    </button>
+                 </form>
+                 <form action="meets/{{userId}}" class="header__form" method="post">
+                    <button id="name" class="nav__item">
+                        Встречи
+                    </button>
+                 </form> --}}
+                    <div class="nav__item"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
+                    <div class="nav__item"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
+                    <div class="nav__item nav__item_active"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
             </div>
         </div>
     </header>
