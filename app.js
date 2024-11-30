@@ -122,6 +122,6 @@ app.get("/meet/:meetId/:userId", urlencodedParser, function (req, res) {
 });
 
 
-app.listen(port, function () {
+app.listen(3000, function () {
     console.log("Сервер запущен на http://localhost:3000");
 });
