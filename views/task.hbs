@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="/css/taskStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">CRM AI Mini App</div>
+
+            <div class="header__nav nav">
+                    <div class="nav__item nav__item_active"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
+                    <div class="nav__item"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
+                    <div class="nav__item"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="task">
+        <div class="task__container">
+            <div class="task__top-info">
+                <div class="task__top-part">
+                    <h1 class="task__title">{{taskInfo.title}}</h1>
+                    <span class="task__date">
+                        <span>{{dateFormat taskInfo.due_date "D.M.YYYY"}}</span>
+                        <span>{{dateFormat taskInfo.due_date "HH:mm"}}</span>
+                    </span>
+                </div>
+                
+                <div class="task__top-part">
+                    <span class="task__priority">{{taskInfo.priority}}</span>
+                    <span class="task__status">{{taskInfo.status}}</span>
+                </div>
+            </div>
+
+            <div class="task__contact-info contact">
+                <h3 class="contact__title">Контакт</h3>
+                <span class="contact__subtitle">
+                    Имя:
+                    <span class="contact__name">{{contact.name}}</span>
+                </span>
+                <span class="contact__subtitle">
+                    Номер:
+                    <span class="contact__number">{{contact.phone}}</span>
+                </span>
+            </div>
+
+            <div class="task__description">
+                Описание:
+                <div class="task__description-text">
+                    {{taskInfo.description}}
+                </div>
+            </div>
+
+            <form class="task__files-form" action="/files/{{taskInfo.task_id}}/{{userId}}" method="post">
+                <button class="task__files-button">Скачать файлы</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

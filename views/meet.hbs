@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="/css/meetStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">CRM AI Mini App</div>
+
+            <div class="header__nav nav">
+                    <div class="nav__item"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
+                    <div class="nav__item"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
+                    <div class="nav__item nav__item_active"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="meet">
+        <div class="meet__container">
+            <div class="meet__top-info">
+                <div class="meet__top-part">
+                    <h1 class="meet__name">{{meetInfo.title}}</h1>
+                    <div class="meet__location meet__subtitle">{{meetInfo.location}}</div>
+                </div>
+
+                <div class="meet__dates">
+                    <div class="meet__date">
+                        <span class="meet_date-info">
+                            {{dateFormat meetInfo.start_time "D.M.YYYY HH:mm"}}
+                        </span>
+                    </div>
+                    
+                    <div class="meet__date">
+                        <span class="meet_date-info">
+                            {{dateFormat meetInfo.end_time "D.M.YYYY HH:mm"}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="meet__user meet__subtitle">
+                {{meetInfo.username}} 
+            </div>
+
+            <div class="meet__users meet__subtitle">
+                Список участников:
+                {{#each meetUsers}}
+                    {{this.username}}
+                {{/each}}
+            </div>
+
+            <div class="meet__notes">
+                Заметки:
+                <div class="meet__notes-text meet__subtitle">
+                    {{meetInfo.notes}}
+                </div>
+            </div>
+
+            <form class="meet__files-form" action="/files/{{meetInfo.meet_id}}/{{userId}}" method="post">
+                <button class="meet__files-button">Скачать файлы</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

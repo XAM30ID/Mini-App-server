@@ -14,21 +14,6 @@
             <div class="header__logo">CRM AI Mini App</div>
 
             <div class="header__nav nav">
-                {{!-- <form action="tasks/{{userId}}" class="header__form" method="post">
-                    <button id="name" class="nav__item">
-                        Задачи
-                    </button>
-                 </form>
-                 <form action="contacts/{{userId}}" class="header__form" method="post">
-                    <button id="name" class="nav__item">
-                        Контакты
-                    </button>
-                 </form>
-                 <form action="meets/{{userId}}" class="header__form" method="post">
-                    <button id="name" class="nav__item">
-                        Встречи
-                    </button>
-                 </form> --}}
                     <div class="nav__item"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
                     <div class="nav__item"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
                     <div class="nav__item nav__item_active"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
@@ -38,17 +23,17 @@
 
     <section class="main-list">
         <div class="main-list__container">
-            {{#each task}}
-                <div class="main-list__item item">
+            {{#each meet}}
+                <a href="/meet/{{this.meeting_id}}/{{this.user_id}}" class="main-list__item item">
                     <div class="item__left-part">
                         <div class="item__title">{{this.title}}</div>
-                        <div class="item__owner">{{this.owner}}</div>
+                        <div class="item__owner item__subtitle">{{this.username}}</div>
                     </div>
                     <div class="item__right-part">
                         <div class="item__place">{{this.location}}</div>
-                        <div class="item__dates">{{this.start_time}} - {{this.end_time}}</div>
+                        <div class="item__dates">{{dateFormat this.start_time "D.M.YYYY HH.MM"}} - {{dateFormat this.end_time "D.M.YYYY HH.MM"}}</div>
                     </div>
-                </div>
+                </a>
             {{/each}}
         </div>
     </section>

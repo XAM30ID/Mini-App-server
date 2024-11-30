@@ -17,21 +17,6 @@
             <div class="header__logo">CRM AI Mini App</div>
 
             <div class="header__nav nav">
-                {{!-- <form action="tasks/{{userId}}" class="header__form" method="post">
-                    <button id="name" class="nav__item">
-                        Задачи
-                    </button>
-                 </form>
-                 <form action="contacts/{{userId}}" class="header__form" method="post">
-                    <button id="name" class="nav__item">
-                        Контакты
-                    </button>
-                 </form>
-                 <form action="meets/{{userId}}" class="header__form" method="post">
-                    <button id="name" class="nav__item">
-                        Встречи
-                    </button>
-                 </form> --}}
                     <div class="nav__item nav__item_active"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
                     <div class="nav__item"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
                     <div class="nav__item"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
@@ -39,52 +24,20 @@
         </div>
     </header>
 
-    <section class="main-list__tasks">
+    <section class="main-list">
         <div class="main-list__container">
             {{#each task}}
-                <div class="main-list__item item">
+                <a href="/task/{{this.task_id}}/{{this.user_id}}" class="main-list__item item">
                     <div class="item__left-part">
                         <div class="item__title">{{this.title}}</div>
-                        <div class="item__contact">{{this.contact}}</div>
+                        <div class="item__contact  item__subtitle">{{this.contact}}</div>
                     </div>
                     <div class="item__right-part">
                         <div class="item__status">{{this.status}}</div>
                         <div class="item__date">{{this.date}}</div>
                         <div class="item__priority">{{this.priority}}</div>
                     </div>
-                </div>
-            {{/each}}
-        </div>
-    </section>
-
-    <section class="main-list__contacts">
-        <div class="main-list__container">
-            {{#each task}}
-                <div class="main-list__item item">
-                    <div class="item__left-part">
-                        <div class="item__name">{{this.name}}</div>
-                    </div>
-                    <div class="item__right-part">
-                        <div class="item__number">{{this.phone}}</div>
-                    </div>
-                </div>
-            {{/each}}
-        </div>
-    </section>
-
-    <section class="main-list__meets">
-        <div class="main-list__container">
-            {{#each task}}
-                <div class="main-list__item item">
-                    <div class="item__left-part">
-                        <div class="item__title">{{this.title}}</div>
-                        <div class="item__owner">{{this.owner}}</div>
-                    </div>
-                    <div class="item__right-part">
-                        <div class="item__place">{{this.location}}</div>
-                        <div class="item__dates">{{this.start_time}} - {{this.end_time}}</div>
-                    </div>
-                </div>
+                </a>
             {{/each}}
         </div>
     </section>

@@ -1,0 +1,60 @@
+.meet {
+    padding: 1vh 7vw;
+    background-color: var(--tg-theme-section-bg-color);
+}
+
+.meet__container {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ubuntu Mono';
+    color: var(--tg-theme-text-color);
+    font-size: 20px;
+    width: auto;
+}
+
+.meet__top-info {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
+.meet__name {
+    font-size: 24px;
+    margin-bottom: 1vh;
+}
+
+.meet__dates {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.meet__date {
+    font-size: 18px;
+}
+
+.meet__date-info {
+    color: var(--tg-theme-subtitle-text-color);
+}
+
+.meet__subtitle {
+    color: var(--tg-theme-subtitle-text-color);
+    margin-top: 1.5vh;
+
+}
+
+.meet__files-form {
+    width: auto;
+    text-align: center;
+    margin-top: 1.5vh;
+}
+
+.meet__files-button {
+    font-size: 20px;
+    padding: 1vh 20px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+}
