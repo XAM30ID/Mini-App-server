@@ -12,10 +12,10 @@ const urlencodedParser = express.urlencoded({ extended: true });
 
 const pool = mysql.createPool({
     connectionLimit: 5,
-    host: "localhost",
-    user: "root",
-    database: "alexandr_mini_app", 
-    password: "Amaterasu"
+    host: "sql7.freemysqlhosting.net",
+    user: "sql7748647",
+    database: "sql7748647", 
+    password: "BfcbBm6XLK"
 });
 
 app.set("view engine", "hbs");
@@ -122,6 +122,6 @@ app.get("/meet/:meetId/:userId", urlencodedParser, function (req, res) {
 });
 
 
-app.listen(3000, function () {
+app.listen(port, function () {
     console.log("Сервер запущен на http://localhost:3000");
 });
