@@ -1,0 +1,9 @@
+.main-meet__adding-button {
+    font-size: 20px;
+    padding: 1vh 20px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+    width: 100%;
+}

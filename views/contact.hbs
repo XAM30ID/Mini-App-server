@@ -31,7 +31,7 @@
             </div>
 
             <div class="contact__phone contact__subtitle">
-                {{contactInfo.phone}}
+                {{contactInfo.username }}
             </div>
 
             <div class="contact__mail contact__subtitle">
@@ -58,6 +58,20 @@
                         {{dateFormat contactInfo.updated_at "D.M.YYYY"}}
                     </span>
                 </div>
+            </div>
+
+            <div class="contact__interaction">
+                <form action="/add-contact/{{userId}}/{{contactInfo.contact_id}}" method="get" class="contact__edit-form">
+                    <button class="contact__edit-button">
+                        Редактировать
+                    </button>
+                </form>
+
+                <form action="/delete-contact/{{userId}}/{{contactInfo.contact_id}}" method="get" class="contact__edit-form">
+                    <button class="contact__delete-button">
+                        Удалить
+                    </button>
+                </form>
             </div>
 
             <form class="contact__files-form" action="/files/{{contactInfo.contact_id}}/{{userId}}" method="post">

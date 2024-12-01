@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="/css/addingStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">CRM AI Mini App</div>
+
+            <div class="header__nav nav">
+                    <div class="nav__item"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
+                    <div class="nav__item nav__item_active"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
+                    <div class="nav__item"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="main-list">
+        <div class="main-list__container">
+            <form action="/add-contact/{{userId}}/{{contactId}}" method="post" class="main__form adding">
+
+                <input type="text" class="adding__input" placeholder="Имя" name="name" value="{{contactInfo.name}}">
+                <input type="text" class="adding__input" placeholder="Username" name="username" value="{{contactInfo.username}}">
+                <input type="text" class="adding__input" placeholder="Телефон" name="phone" value="{{contactInfo.phone}}">
+                <input type="text" class="adding__input" placeholder="Email" name="email" value="{{contactInfo.email}}">
+                <textarea class="adding__input" placeholder="Заметки" name="notes">{{contactInfo.notes}}</textarea>
+                <input type="submit" value="Сохранить контакт" class="adding__button">
+            </form>
+        </div>
+    </section>
+</body>
+</html>

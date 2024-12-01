@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mainStyle.css">
+    <link rel="stylesheet" href="/css/addingStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">CRM AI Mini App</div>
+
+            <div class="header__nav nav">
+                    <div class="nav__item"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
+                    <div class="nav__item"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
+                    <div class="nav__item nav__item_active"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="main-list">
+        <div class="main-list__container">
+            <form action="/add-meet/{{userId}}/{{meetId}}" method="post" class="main__form adding">
+
+                <input type="text" class="adding__input" placeholder="Название" name="title" value="{{meetInfo.title}}">
+                <label for="start_time" class="adding__label">Дата и время начала:</label>
+                <input class="adding__date" type="datetime-local" name="start_time" value="{{dateFormat meetInfo.start_time "YYYY-MM-DD"}}T{{dateFormat taskInfo.due_date "HH:mm"}}">
+                
+                <label for="end_time" class="adding__label">Дата и время окончания:</label>
+                <input class="adding__date" type="datetime-local" name="end_time" value="{{dateFormat meetInfo.end_time "YYYY-MM-DD"}}T{{dateFormat taskInfo.due_date "HH:mm"}}">
+                <input type="text" class="adding__input" placeholder="Место проведения" name="location" value="{{meetInfo.location}}">
+                <textarea class="adding__input" placeholder="Username'ы участников через запятую" name="participants">{{meetInfo.participants}}</textarea>
+                <textarea class="adding__input" placeholder="Заметки" name="notes">{{meetInfo.notes}}</textarea>
+
+                <input type="submit" value="Сохранить встречу" class="adding__button">
+            </form>
+        </div>
+    </section>
+</body>
+</html>

@@ -53,7 +53,9 @@
             <div class="meet__users meet__subtitle">
                 Список участников:
                 {{#each meetUsers}}
-                    {{this.username}}
+                    <div class="meet__user meet__subtitle">
+                        {{this.username}}
+                    </div>
                 {{/each}}
             </div>
 
@@ -62,6 +64,20 @@
                 <div class="meet__notes-text meet__subtitle">
                     {{meetInfo.notes}}
                 </div>
+            </div>
+
+            <div class="meet__interaction">
+                <form action="/add-meet/{{userId}}/{{meetInfo.meeting_id}}" method="get" class="main-list__task-adding">
+                    <button class="meet__edit-button">
+                        Редактировать
+                    </button>
+                </form>
+
+                <form action="/delete-meet/{{userId}}/{{meetInfo.meeting_id}}" method="get" class="main-list__task-adding">
+                    <button class="meet__delete-button">
+                        Удалить
+                    </button>
+                </form>
             </div>
 
             <form class="meet__files-form" action="/files/{{meetInfo.meet_id}}/{{userId}}" method="post">

@@ -68,7 +68,7 @@ html {
 }
 
 .main-list__container {
-    width: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

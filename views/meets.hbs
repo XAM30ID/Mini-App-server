@@ -32,10 +32,16 @@
                     </div>
                     <div class="item__right-part">
                         <div class="item__place">{{this.location}}</div>
-                        <div class="item__dates">{{dateFormat this.start_time "D.M.YYYY HH.MM"}} - {{dateFormat this.end_time "D.M.YYYY HH.MM"}}</div>
+                        <div class="item__dates">{{dateFormat this.start_time "D.M.YYYY HH.MM"}} {{dateFormat this.end_time "D.M.YYYY HH.MM"}}</div>
                     </div>
                 </a>
             {{/each}}
+
+            <form action="/add-meet/{{userId}}/new" method="get" class="main-list__meet-adding">
+                <button class="main-meet__adding-button">
+                    Новая встреча
+                </button>
+            </form>
         </div>
     </section>
 </body>

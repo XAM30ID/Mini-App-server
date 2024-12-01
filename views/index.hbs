@@ -39,6 +39,12 @@
                     </div>
                 </a>
             {{/each}}
+            
+            <form action="/add-task/{{userId}}/new" method="get" class="main-list__task-adding">
+                <button class="main-task__adding-button">
+                    Новая задача
+                </button>
+            </form>
         </div>
     </section>
 </body>

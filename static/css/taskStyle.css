@@ -86,3 +86,27 @@
     background-color: var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
 }
+
+.task__interaction {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.task__delete-button {
+    font-size: 18px;
+    padding: .5vh 10px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-destructive-text-color);
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-destructive-text-color);
+}
+
+.task__edit-button {
+    font-size: 18px;
+    padding: .5vh 10px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-accent-text-color);
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-accent-text-color);
+}
