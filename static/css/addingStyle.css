@@ -57,4 +57,5 @@
     border: solid 2px var(--tg-theme-text-color);
     max-width: 100%;
     min-width: 100%;
+    background-color: var(--tg-theme-bg-color);
 }
