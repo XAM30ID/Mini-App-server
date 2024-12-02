@@ -14,7 +14,8 @@
 <body>
 </body>
 <script>
-    var tg = window.Telegram.WebApp;
-    window.location.href = "https://mini-app-server-83yp.onrender.com/" + tg.WebAppInitData.user.id;
+    let tg = window.Telegram.WebApp;
+    console.log("https://mini-app-server-83yp.onrender.com/" + tg.initDataUnsafe.user.id);
+    window.location.href = "https://mini-app-server-83yp.onrender.com/" + tg.initDataUnsafe.user.id;
 </script>
 </html>
