@@ -212,8 +212,9 @@ app.post("/add-task/:userId/:taskId", urlencodedParser, function (req, res) {
             }
 
             else {
+                let currentDate = new Date();
                 pool.query(BD_queries.add_task, [task_id, user_id, task_contact, title, description, 
-                    priority, null, status, due_time, Date.now()], function (err, task_contact) {
+                    priority, null, status, due_time, currentDate], function (err, task_contact) {
                     if (err) return console.log(err);
                     res.redirect("/" + user_id)
                 });
@@ -287,14 +288,16 @@ app.post("/add-contact/:userId/:contactId", urlencodedParser, function (req, res
     pool.query(BD_queries.contact_info, [user_id, contact_id], function (err, is_editing) {
         if (err) return console.log(err);
         if (is_editing.length > 0) {
-            pool.query(BD_queries.edit_contact, [contact_id, user_id, name, phone, email, notes, Date.now(), username, contact_id, user_id], function (err, contact) {
+            let currentDate = new Date();
+            pool.query(BD_queries.edit_contact, [contact_id, user_id, name, phone, email, notes, currentDate, username, contact_id, user_id], function (err, contact) {
                 if (err) return console.log(err);
                 res.redirect("/contacts/" + user_id)
             });
         }
 
         else {
-            pool.query(BD_queries.add_contact, [contact_id, user_id, name, phone, email, notes, Date.now(), Date.now(), username], function (err, contact) {
+            let currentDate = new Date();
+            pool.query(BD_queries.add_contact, [contact_id, user_id, name, phone, email, notes, currentDate, currentDate, username], function (err, contact) {
                 if (err) return console.log(err);
                 res.redirect("/contacts/" + user_id)
             });
