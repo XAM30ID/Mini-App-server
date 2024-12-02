@@ -23,6 +23,12 @@ app.set("view engine", "hbs");
 app.use(express.static("static"))
 
 
+app.get("/", urlencodedParser, function (req, res) {
+    res.render("addresser.hbs", {
+    });
+}); 
+
+
 app.get("/:userId", urlencodedParser, function (req, res) {
     const user_id = req.params.userId
     pool.query(BD_queries.all_tasks, [user_id], function (err, tasks) {
