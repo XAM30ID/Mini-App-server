@@ -31,13 +31,21 @@ app.get("/", urlencodedParser, function (req, res) {
 
 app.get("/:userId", urlencodedParser, function (req, res) {
     const user_id = req.params.userId
-    pool.query(BD_queries.all_tasks, [user_id], function (err, tasks) {
+    pool.query(BD_queries.all_contacts, [user_id], function (err, contacts) {
         if (err) return console.log(err);
-        res.render("index.hbs", {
+        res.render("new_index.hbs", {
             userId: user_id,
-            task: tasks
+            contacts: contacts
         });
     });
+
+    // pool.query(BD_queries.all_tasks, [user_id], function (err, tasks) {
+    //     if (err) return console.log(err);
+    //     res.render("index.hbs", {
+    //         userId: user_id,
+    //         task: tasks
+    //     });
+    // });
 });  
 
 app.get("/contacts/:userId", urlencodedParser, function (req, res) {
@@ -99,7 +107,7 @@ app.get("/contact/:contactId/:userId", urlencodedParser, function (req, res) {
     const user_id = req.params.userId;
     pool.query(BD_queries.contact_info, [user_id, contact_id], function (err, contact_info) {
         if (err) return console.log(err);
-        res.render("contact.hbs", {
+        res.render("new_contact.hbs", {
             contactInfo: contact_info[0],   
             userId: user_id
         });
@@ -420,6 +428,6 @@ app.get("/delete-contact/:userId/:contactId", urlencodedParser, function (req, r
 });
 
 
-app.listen(port, function () {
+app.listen(3000, function () {
     console.log("Сервер запущен на http://localhost:3000");
 });
