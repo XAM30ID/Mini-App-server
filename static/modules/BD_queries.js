@@ -13,6 +13,8 @@ WHERE contacts.user_id = ? AND contacts.contact_id = ?"
 
 const contact_info = "SELECT * FROM contacts \
 WHERE user_id = ? AND contact_id = ?"
+const task_by_contact = "SELECT * FROM tasks \
+WHERE user_id = ? AND contact_id = ?"
 
 const meet_info = "SELECT meets.meeting_id, meets.title, meets.start_time, \
 meets.end_time, meets.location, meets.participants, meets.notes, users.username FROM meets \
@@ -65,3 +67,4 @@ module.exports.edit_meet = edit_meet;
 module.exports.delete_task = delete_task;
 module.exports.delete_contact = delete_contact;
 module.exports.delete_meet = delete_meet;
+module.exports.task_by_contact = task_by_contact;

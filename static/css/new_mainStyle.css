@@ -82,7 +82,7 @@ html {
     padding: 2vh 0;
     font-family: 'Ubuntu Mono';
     font-size: 18px;
-    border-bottom: solid 1px var(--tg-theme-section-bg-color);
+    border-bottom: solid 1px var(--tg-theme-section-separator-color);
 }
 
 .main-list__heads {
@@ -91,15 +91,15 @@ html {
     justify-content: space-between;
     font-size: 18px;
     color: var(--tg-theme-text-color);
-    border-bottom: solid 1px var(--tg-theme-section-bg-color);
+    border-bottom: solid 1px var(--tg-theme-section-separator-color);
     padding-bottom: 5px;
 }
 
 .main-task__adding-button {
     border: none;
     background-color: transparent;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 600;
     cursor: pointer;
     color: var(--tg-theme-accent-text-color);
 }

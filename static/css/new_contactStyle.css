@@ -1,6 +1,5 @@
 .contact {
     padding: 1vh 7vw;
-    background-color: var(--tg-theme-section-bg-color);
 }
 
 .contact__container {
@@ -13,35 +12,13 @@
     width: auto;
 }
 
-.contact__top-info {
-    display: flex;
-    justify-content: space-between;
-    width: auto;
-}
-
 .contact__name {
     font-size: 24px;
-    margin-bottom: 1vh;
-}
-
-.contact__dates {
-    margin-top: 1.5vh;
-    display: flex;
-    flex-direction: column;
-    gap: 1vh;
-}
-
-.contact__date {
-    font-size: 18px;
-}
-
-.contact__date-info {
-    color: var(--tg-theme-subtitle-text-color);
 }
 
 .contact__subtitle {
     color: var(--tg-theme-text-color);
-    margin-top: 1.5vh;
+    margin-top: 15px;
 
 }
 
@@ -85,4 +62,43 @@
 .contact__title {
     font-size: 16px;
     color: var(--tg-theme-subtitle-text-color);
+}
+
+.contact__links {
+    margin-top: 5px;
+    display: block;
+    fill: var(--tg-theme-link-color);
+}
+
+.contact__notes-text {
+    margin-top: 5px;
+    border: 1px solid var(--tg-theme-section-separator-color);
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--tg-theme-text-color);
+    background-color: var(--tg-theme-section-bg-color);
+    min-height: 80px;
+    max-height: 150px;
+}
+
+.contact__dates {
+    margin-top: 1.5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.contact__date {
+    font-size: 16px;
+    color: var(--tg-theme-subtitle-text-color);
+}
+
+.task {
+    font-family: 'Ubuntu Mono';
+    font-size: 18px;
+}
+
+.task__part {
+    display: flex;
+    justify-content: space-between;
 }

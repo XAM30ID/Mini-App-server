@@ -18,6 +18,16 @@ const pool = mysql.createPool({
     password: "BfcbBm6XLK"
 });
 
+
+// const pool = mysql.createPool({
+//     connectionLimit: 5,
+//     host: "localhost",
+//     user: "root",
+//     database: "alexandr_mini_app", 
+//     password: "Amaterasu"
+// });
+
+
 app.set("view engine", "hbs");
 
 app.use(express.static("static"))
@@ -107,11 +117,23 @@ app.get("/contact/:contactId/:userId", urlencodedParser, function (req, res) {
     const user_id = req.params.userId;
     pool.query(BD_queries.contact_info, [user_id, contact_id], function (err, contact_info) {
         if (err) return console.log(err);
-        res.render("new_contact.hbs", {
-            contactInfo: contact_info[0],   
-            userId: user_id
+        pool.query(BD_queries.task_by_contact, [user_id, contact_id], function (err, contact_tasks) {
+            if (err) return console.log(err);
+            res.render("new_contact.hbs", {
+                contactInfo: contact_info[0],   
+                userId: user_id,
+                tasks: contact_tasks
+            });
         });
     });
+
+    // pool.query(BD_queries.contact_info, [user_id, contact_id], function (err, contact_info) {
+    //     if (err) return console.log(err);
+    //     res.render("new_contact.hbs", {
+    //         contactInfo: contact_info[0],   
+    //         userId: user_id
+    //     });
+    // });
 });
 
 
@@ -252,7 +274,7 @@ app.get("/add-contact/:userId/:contactId", urlencodedParser, function (req, res)
         pool.query(BD_queries.contact_info, [user_id, contact_id], function (err, contact_info) {
             if (err) return console.log(err);
             if (contact_info.length == 0) {
-                res.render("contact_adding.hbs", {
+                res.render("new_contact_adding.hbs", {
                     userId: user_id,
                     contactId: contact_id
                 });
@@ -261,7 +283,7 @@ app.get("/add-contact/:userId/:contactId", urlencodedParser, function (req, res)
             else {
                 if (contact_info[0].contact_id == null) {
 
-                    res.render("contact_adding.hbs", {
+                    res.render("new_contact_adding.hbs", {
                         contactId: contact_id,
                         userId: user_id
                     });
@@ -270,7 +292,7 @@ app.get("/add-contact/:userId/:contactId", urlencodedParser, function (req, res)
                 else {
                     pool.query(BD_queries.contact_info, [user_id, contact_info[0].contact_id], function (err, contact_info) {
                         if (err) return console.log(err);
-                        res.render("contact_adding.hbs", {
+                        res.render("new_contact_adding.hbs", {
                             contactInfo: contact_info[0],
                             userId: user_id,
                             contactId: contact_id

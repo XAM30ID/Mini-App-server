@@ -50,21 +50,45 @@
                 </div>
             </div>
 
-            <div class="contact__phone contact__subtitle">
+            <div class="contact__user contact__subtitle">
                 <div class="contact__title">Username:</div>
-                {{contactInfo.username }}
+                <a href="https://t.me/{{contactInfo.username}}" class="contact__links">@{{contactInfo.username}}</a>
+            </div>
+
+            <div class="contact__phone contact__subtitle">
+                <div class="contact__title">Телефон:</div>
+                <a href="tel:{{contactInfo.phone}}" class="contact__links">{{contactInfo.phone}}</a>
             </div>
 
             <div class="contact__mail contact__subtitle">
                 <div class="contact__title">Email:</div>
-                <a href="mailto:{{contactInfo.email}}">{{contactInfo.email}}</a>
+                <a href="mailto:{{contactInfo.email}}" class="contact__links">{{contactInfo.email}}</a>
             </div>
 
-            <div class="contact__notes contact__subtitle">
+            <div class="contact__notes contact__title contact__subtitle">
                 Заметки:
-                <div class="contact__notes-text contact__subtitle">
+                <div class="contact__notes-text ">
                     {{contactInfo.notes}}
                 </div>
+            </div>
+
+            <div class="contact__tasks-container">
+                <div class="contact__tasks-title">Задачи:</div>
+                {{#each tasks}}
+                    <div class="contact__task task">
+                        <div class="task__part">
+                            <div class="task__title">{{this.title}}</div>
+                            <div class="task__priority">{{this.priority}}</div>
+                        </div>
+                        <div class="task__part">
+                            <div class="task__description">{{this.description}}</div>
+                            <div class="task__status">{{this.status}}</div>
+                        </div>
+                        <div class="task__part">
+                            <div class="task__date">{{dateFormat this.due_date "D.M.YYYY HH:mm"}}</div>
+                        </div>
+                    </div>
+                {{/each}}
             </div>
 
             <div class="contact__dates">
@@ -81,10 +105,9 @@
                     </span>
                 </div>
             </div>
-
-            <form class="contact__files-form" action="/files/{{contactInfo.contact_id}}/{{userId}}" method="post">
+            {{!-- <form class="contact__files-form" action="/files/{{contactInfo.contact_id}}/{{userId}}" method="post">
                 <button class="contact__files-button">Скачать файлы</button>
-            </form>
+            </form> --}}
         </div>
     </section>
 </body>
