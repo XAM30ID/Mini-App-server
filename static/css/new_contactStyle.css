@@ -19,7 +19,6 @@
 .contact__subtitle {
     color: var(--tg-theme-text-color);
     margin-top: 15px;
-
 }
 
 .contact__files-form {
@@ -67,7 +66,7 @@
 .contact__links {
     margin-top: 5px;
     display: block;
-    fill: var(--tg-theme-link-color);
+    fill: var(--tg-theme-text-color);
 }
 
 .contact__notes-text {
@@ -86,6 +85,7 @@
     display: flex;
     flex-direction: column;
     gap: 1vh;
+    margin-bottom: 2vh;
 }
 
 .contact__date {
@@ -95,10 +95,48 @@
 
 .task {
     font-family: 'Ubuntu Mono';
-    font-size: 18px;
+    font-size: 16px;
+    border: 1px var(--tg-theme-section-separator-color) solid;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    color: var(--tg-theme-text-color);
+    display: block;
+    text-decoration: none;
+}
+
+.contact__tasks-title {
+    font-size: 16px;
+    color: var(--tg-theme-subtitle-text-color);
 }
 
 .task__part {
     display: flex;
     justify-content: space-between;
+}
+
+.contact__tasks-container {
+    font-family: 'Ubuntu Mono';
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.task__title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.task__priority {
+    color: var(--tg-theme-accent-text-color);
+}
+
+.task__description {
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task__part:last-child {
+    color: var(--tg-theme-subtitle-text-color);
 }

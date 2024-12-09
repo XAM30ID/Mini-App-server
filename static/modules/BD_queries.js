@@ -8,7 +8,7 @@ const task_info_1 = "SELECT tasks.task_id, users.username, tasks.contact_id, tas
 tasks.description, tasks.priority, tasks.attachments, tasks.status, tasks.due_date, tasks.created_at FROM tasks \
 INNER JOIN users ON users.user_id = tasks.user_id \
 WHERE tasks.user_id = ? AND tasks.task_id = ?";
-const task_info_2 = "SELECT contacts.name, contacts.phone FROM contacts \
+const task_info_2 = "SELECT contacts.name, contacts.phone, contacts.contact_id, contacts.username FROM contacts \
 WHERE contacts.user_id = ? AND contacts.contact_id = ?"
 
 const contact_info = "SELECT * FROM contacts \

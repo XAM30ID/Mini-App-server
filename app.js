@@ -12,10 +12,11 @@ const urlencodedParser = express.urlencoded({ extended: true });
 
 const pool = mysql.createPool({
     connectionLimit: 5,
-    host: "sql7.freemysqlhosting.net",
-    user: "sql7748647",
-    database: "sql7748647", 
-    password: "BfcbBm6XLK"
+    host: "2hb5f.h.filess.io",
+    user: "MySqlServ_atroompast",
+    database: "MySqlServ_atroompast", 
+    password: "e2d720248c942afddb6f62f2d0a4208afe4f6f8f",
+    port: 3307
 });
 
 
@@ -48,26 +49,7 @@ app.get("/:userId", urlencodedParser, function (req, res) {
             contacts: contacts
         });
     });
-
-    // pool.query(BD_queries.all_tasks, [user_id], function (err, tasks) {
-    //     if (err) return console.log(err);
-    //     res.render("index.hbs", {
-    //         userId: user_id,
-    //         task: tasks
-    //     });
-    // });
 });  
-
-app.get("/contacts/:userId", urlencodedParser, function (req, res) {
-    const user_id = req.params.userId
-    pool.query(BD_queries.all_contacts, [user_id], function (err, contacts) {
-        if (err) return console.log(err);
-        res.render("contacts.hbs", {
-            userId: user_id,
-            contact: contacts
-        });
-    });
-});
 
 
 app.get("/meets/:userId", urlencodedParser, function (req, res) {
@@ -91,7 +73,7 @@ app.get("/task/:taskId/:userId", urlencodedParser, function (req, res) {
 
         if (task_info[0].contact_id == null) {
 
-            res.render("task.hbs", {
+            res.render("new_task.hbs", {
                 taskInfo: task_info[0],
                 contact: null,
                 userId: user_id
@@ -101,7 +83,7 @@ app.get("/task/:taskId/:userId", urlencodedParser, function (req, res) {
         else {
             pool.query(BD_queries.task_info_2, [user_id, task_info[0].contact_id], function (err, task_contact) {
                 if (err) return console.log(err);
-                res.render("task.hbs", {
+                res.render("new_task.hbs", {
                     taskInfo: task_info[0],
                     contact: task_contact[0],
                     userId: user_id
@@ -126,14 +108,6 @@ app.get("/contact/:contactId/:userId", urlencodedParser, function (req, res) {
             });
         });
     });
-
-    // pool.query(BD_queries.contact_info, [user_id, contact_id], function (err, contact_info) {
-    //     if (err) return console.log(err);
-    //     res.render("new_contact.hbs", {
-    //         contactInfo: contact_info[0],   
-    //         userId: user_id
-    //     });
-    // });
 });
 
 
@@ -177,7 +151,7 @@ app.get("/add-task/:userId/:taskId", urlencodedParser, function (req, res) {
         pool.query(BD_queries.task_info_1, [user_id, task_id], function (err, task_info) {
             if (err) return console.log(err);
             if (task_info.length == 0) {
-                res.render("task_adding.hbs", {
+                res.render("new_task_adding.hbs", {
                     userId: user_id,
                     taskId: task_id
                 });
@@ -186,7 +160,7 @@ app.get("/add-task/:userId/:taskId", urlencodedParser, function (req, res) {
             else {
                 if (task_info[0].contact_id == null) {
 
-                    res.render("task_adding.hbs", {
+                    res.render("new_task_adding.hbs", {
                         taskId: task_id,
                         taskInfo: task_info[0],
                         contact: null,
@@ -197,7 +171,7 @@ app.get("/add-task/:userId/:taskId", urlencodedParser, function (req, res) {
                 else {
                     pool.query(BD_queries.task_info_2, [user_id, task_info[0].contact_id], function (err, task_contact) {
                         if (err) return console.log(err);
-                        res.render("task_adding.hbs", {
+                        res.render("new_task_adding.hbs", {
                             taskInfo: task_info[0],
                             contact: task_contact[0],
                             userId: user_id,
@@ -228,7 +202,7 @@ app.post("/add-task/:userId/:taskId", urlencodedParser, function (req, res) {
             task_contact = null;
         }
         else {
-            task_contact = task_contact[0].contactId
+            task_contact = task_contact[0].contact_id
         };
 
         pool.query(BD_queries.task_exists, [user_id, task_id], function (err, is_editing) {
@@ -273,21 +247,21 @@ app.get("/add-contact/:userId/:contactId", urlencodedParser, function (req, res)
         };
         pool.query(BD_queries.contact_info, [user_id, contact_id], function (err, contact_info) {
             if (err) return console.log(err);
-            if (contact_info.length == 0) {
+            if (contact_info.length == 0 || contact_info[0].contact_id == null) {
                 res.render("new_contact_adding.hbs", {
                     userId: user_id,
                     contactId: contact_id
                 });
             }
 
-            else {
-                if (contact_info[0].contact_id == null) {
+            // else {
+            //     if (contact_info[0].contact_id == null) {
 
-                    res.render("new_contact_adding.hbs", {
-                        contactId: contact_id,
-                        userId: user_id
-                    });
-                }
+            //         res.render("new_contact_adding.hbs", {
+            //             contactId: contact_id,
+            //             userId: user_id
+            //         });
+            //     }
 
                 else {
                     pool.query(BD_queries.contact_info, [user_id, contact_info[0].contact_id], function (err, contact_info) {
@@ -299,7 +273,7 @@ app.get("/add-contact/:userId/:contactId", urlencodedParser, function (req, res)
                         });
                     });
                 };
-            };
+            // };
         });
     });
 });
@@ -321,7 +295,7 @@ app.post("/add-contact/:userId/:contactId", urlencodedParser, function (req, res
             let currentDate = new Date();
             pool.query(BD_queries.edit_contact, [contact_id, user_id, name, phone, email, notes, currentDate, username, contact_id, user_id], function (err, contact) {
                 if (err) return console.log(err);
-                res.redirect("/contacts/" + user_id)
+                res.redirect("/" + user_id)
             });
         }
 
@@ -329,7 +303,7 @@ app.post("/add-contact/:userId/:contactId", urlencodedParser, function (req, res
             let currentDate = new Date();
             pool.query(BD_queries.add_contact, [contact_id, user_id, name, phone, email, notes, currentDate, currentDate, username], function (err, contact) {
                 if (err) return console.log(err);
-                res.redirect("/contacts/" + user_id)
+                res.redirect("/" + user_id)
             });
         };
     });

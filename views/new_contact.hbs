@@ -75,19 +75,19 @@
             <div class="contact__tasks-container">
                 <div class="contact__tasks-title">Задачи:</div>
                 {{#each tasks}}
-                    <div class="contact__task task">
+                    <a href="/task/{{this.task_id}}/{{this.user_id}}" class="contact__task task">
                         <div class="task__part">
                             <div class="task__title">{{this.title}}</div>
                             <div class="task__priority">{{this.priority}}</div>
                         </div>
                         <div class="task__part">
                             <div class="task__description">{{this.description}}</div>
-                            <div class="task__status">{{this.status}}</div>
                         </div>
                         <div class="task__part">
                             <div class="task__date">{{dateFormat this.due_date "D.M.YYYY HH:mm"}}</div>
+                            <div class="task__status">{{this.status}}</div>
                         </div>
-                    </div>
+                    </a>
                 {{/each}}
             </div>
 
@@ -95,13 +95,13 @@
                 <div class="contact__date">
                     Дата создания:
                     <span class="contact__date-info">
-                        {{dateFormat contactInfo.created_at "D.M.YYYY"}}
+                        {{dateFormat contactInfo.created_at "DD.MM.YYYY"}}
                     </span>
                 </div>
                 <div class="contact__date">
                     Дата изменения:
                     <span class="contact__date-info">
-                        {{dateFormat contactInfo.updated_at "D.M.YYYY"}}
+                        {{dateFormat contactInfo.updated_at "DD.MM.YYYY"}}
                     </span>
                 </div>
             </div>

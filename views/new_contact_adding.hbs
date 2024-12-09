@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/mainStyle.css">
-    <link rel="stylesheet" href="/css/addingStyle.css">
+    <link rel="stylesheet" href="/css/new_mainStyle.css">
+    <link rel="stylesheet" href="/css/new_addingStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title></title>
@@ -14,24 +14,37 @@
     <header class="header">
         <div class="header__container">
             <div class="header__logo">CRM AI Mini App</div>
-
-            <div class="header__nav nav">
-                    <div class="nav__item"><a href="/{{userId}}" class="nav__text">Задачи</a></div>
-                    <div class="nav__item nav__item_active"><a href="/contacts/{{userId}}" class="nav__text">Контакты</a></div>
-                    <div class="nav__item"><a href="/meets/{{userId}}" class="nav__text">Встречи</a></div>
-            </div>
         </div>
     </header>
 
     <section class="main-list">
+        <div class="contact__top-menu">
+            <a href="/{{userId}}" class="contact__return return">
+                <svg class="contact__button-value" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Layer_41" data-name="Layer 41">
+                        <path d="m43.46 14.92h-30.63l9.51-9.51a2 2 0 0 0 -2.83-2.82l-12.92 12.92a2 2 0 0 0 -.59 1.8 2.11 2.11 0 0 0 .55 1l12.96 12.95a2 2 0 0 0 1.41.59 2 2 0 0 0 1.42-3.42l-9.51-9.51h30.63a10.55 10.55 0 0 1 10.54 10.54v30.54a2 2 0 0 0 4 0v-30.54a14.55 14.55 0 0 0 -14.54-14.54z"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+        
+        
         <div class="main-list__container">
             <form action="/add-contact/{{userId}}/{{contactId}}" method="post" class="main__form adding">
-
-                <input type="text" class="adding__input" placeholder="Имя" name="name" value="{{contactInfo.name}}">
-                <input type="text" class="adding__input" placeholder="Username" name="username" value="{{contactInfo.username}}">
-                <input type="text" class="adding__input" placeholder="Телефон" name="phone" value="{{contactInfo.phone}}">
-                <input type="text" class="adding__input" placeholder="Email" name="email" value="{{contactInfo.email}}">
-                <textarea class="adding__input" placeholder="Заметки" name="notes">{{contactInfo.notes}}</textarea>
+                <label for="name" class="adding__label">Имя</label>
+                <input id="name" type="text" class="adding__input" placeholder="Имя контакта" name="name" value="{{contactInfo.name}}">
+                
+                <label for="username" class="adding__label">Username</label>
+                <input id="username" type="text" class="adding__input" placeholder="Username контакта" name="username" value="{{contactInfo.username}}">
+                
+                <label for="phone" class="adding__label">Телефон</label>
+                <input id="phone" type="text" class="adding__input" placeholder="Телефон контакта" name="phone" value="{{contactInfo.phone}}">
+                
+                <label for="email" class="adding__label">Email</label>
+                <input id="email" type="text" class="adding__input" placeholder="Email контакта" name="email" value="{{contactInfo.email}}">
+                
+                <label for="notes" class="adding__label">Заметки</label>
+                <textarea id="notes" class="adding__input notes" placeholder="Заметки" name="notes">{{contactInfo.notes}}</textarea>
                 <input type="submit" value="Сохранить контакт" class="adding__button">
             </form>
         </div>

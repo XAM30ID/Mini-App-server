@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/new_mainStyle.css">
+    <link rel="stylesheet" href="/css/new_taskStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">CRM AI Mini App</div>
+        </div>
+    </header>
+
+    <section class="task">
+        <div class="contact__top-menu">
+            <a href="/contact/{{contact.contact_id}}/{{userId}}" class="contact__return return">
+                <svg class="contact__button-value" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Layer_41" data-name="Layer 41">
+                        <path d="m43.46 14.92h-30.63l9.51-9.51a2 2 0 0 0 -2.83-2.82l-12.92 12.92a2 2 0 0 0 -.59 1.8 2.11 2.11 0 0 0 .55 1l12.96 12.95a2 2 0 0 0 1.41.59 2 2 0 0 0 1.42-3.42l-9.51-9.51h30.63a10.55 10.55 0 0 1 10.54 10.54v30.54a2 2 0 0 0 4 0v-30.54a14.55 14.55 0 0 0 -14.54-14.54z"/>
+                    </g>
+                </svg>
+            </a>
+
+            <div class="return__interaction">
+                <form action="/add-task/{{userId}}/{{taskInfo.task_id}}" method="get" class="contact__edit-form">
+                    <button class="contact__button">
+                        <svg version="1.1" class="contact__button-value" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g><g><path d="M487.104,24.954c-33.274-33.269-87.129-33.273-120.407,0L51.948,339.665c-2.098,2.097-3.834,4.825-4.831,7.817 L1.057,485.647c-5.2,15.598,9.679,30.503,25.298,25.296l138.182-46.055c2.922-0.974,5.665-2.678,7.819-4.831l314.748-314.711 C520.299,112.154,520.299,58.146,487.104,24.954z M51.654,460.352l23.177-69.525l46.356,46.35L51.654,460.352z M158.214,417.634 l-63.837-63.829l267.272-267.24l63.837,63.83L158.214,417.634z M458.818,117.065l-5.049,5.049l-63.837-63.83l5.049-5.048 c17.602-17.597,46.239-17.597,63.837,0C476.419,70.833,476.419,99.467,458.818,117.065z"/></g></g></svg>
+                    </button>
+                </form>
+
+                <form action="/delete-task/{{userId}}/{{taskInfo.task_id}}" method="get" class="contact__edit-form">
+                    <button class="contact__button">
+                        <svg viewBox="0 0 192 192" class="contact__button-value" xmlns="http://www.w3.org/2000/svg"><g id="_06-trash" data-name="06-trash"><path d="m184 32h-56v-8a24.027 24.027 0 0 0 -24-24h-16a24.027 24.027 0 0 0 -24 24v8h-56v16h8.84l13.627 122.651a23.976 23.976 0 0 0 23.854 21.349h83.358a23.976 23.976 0 0 0 23.854-21.35l13.627-122.65h8.84zm-104-8a8.009 8.009 0 0 1 8-8h16a8.009 8.009 0 0 1 8 8v8h-32zm65.63 144.883a7.992 7.992 0 0 1 -7.951 7.117h-83.358a7.992 7.992 0 0 1 -7.951-7.116l-13.432-120.884h126.124z"/><path d="m88 64h16v96h-16z"/><path d="m83.834 104h96.333v16h-96.333z" transform="matrix(.083 -.997 .997 .083 9.422 234.24)"/><path d="m52 63.834h16v96.333h-16z" transform="matrix(.997 -.083 .083 .997 -9.094 5.37)"/></g></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="task__container">
+            <div class="task__top-info">
+                <div class="task__top-part">
+                    <h1 class="task__title">{{taskInfo.title}}</h1>
+                    <span class="task__date">
+                        <div class="task__date-title task__subinfo">Срок выполнения:</div>
+                        <span>{{dateFormat taskInfo.due_date "DD.MM.YYYY"}}</span>
+                        <span>{{dateFormat taskInfo.due_date "HH:mm"}}</span>
+                    </span>
+                </div>
+                
+                <div class="task__top-part">
+                    <div class="task__subinfo">
+                              <div class=" task__subtitle">Приоритет</div> 
+                        <span class="task__priority task__state">{{taskInfo.priority}}</span>
+                    </div>
+                    <div class="task__subinfo">
+                        <div class=" task__subtitle">Статус</div>
+                        <span class="task__status task__state">{{taskInfo.status}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task__contact-info contact">
+                <h3 class="contact__title">Контакт</h3>
+                <a href="/contact/{{contact.contact_id}}/{{userId}}" class="contact__link">
+                    <span class="contact__subtitle">
+                        Имя:
+                        <span class="contact__name contact__info">{{contact.name}}</span>
+                    </span>
+                    <span class="contact__subtitle">
+                        Номер:
+                        <span class="contact__number contact__info">{{contact.phone}}</span>
+                    </span>
+                </a>
+            </div>
+
+            <div class="task__description">
+                Описание:
+                <div class="task__description-text">
+                    {{taskInfo.description}}
+                </div>
+            </div>
+
+            {{!-- <form class="task__files-form" action="/files/{{taskInfo.task_id}}/{{userId}}" method="post">
+                <button class="task__files-button">Скачать файлы</button>
+            </form> --}}
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+{{!-- "UPDATE tasks SET task_id='3', user_id='763283309', contact_id=NULL, title='Test adding', description='Test adding about', priority='Low', attachments=NULL, status='In process', due_date='2024-11-30T23:52', created_at=1733003045122, WHERE task_id='3' AND user_id='763283309'"
+ --}}

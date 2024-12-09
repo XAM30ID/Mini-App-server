@@ -1,0 +1,167 @@
+.task {
+    padding: 0 7vw 1vh;
+    background-color: var(--tg-theme-section-bg-color);
+}
+
+.task__container {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Ubuntu Mono';
+    color: var(--tg-theme-text-color);
+    width: auto;
+}
+
+.task__top-info {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
+.task__top-part {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5vh;
+}
+
+.task__title {
+    font-size: 24px;
+    margin-bottom: 1vh;
+}
+
+.task__date {
+    font-size: 18px;
+    color: var(--tg-theme-subtitle-text-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.task__subinfo {
+    font-size: 16px;
+    color: var(--tg-theme-subtitle-text-color);
+}
+
+.task__subinfo:last-child {
+    margin-top: 10px;
+}
+
+.task__state {
+    font-size: 18px;
+    color: var(--tg-theme-accent-text-color);
+}
+
+.task__priority {
+    color: var(--tg-theme-accent-text-color);
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    margin-bottom: 1.5vh;
+    border-top: 1px var(--tg-theme-section-separator-color) solid;
+    border-bottom: 1px var(--tg-theme-section-separator-color) solid;
+    padding: 10px 0;
+}
+
+.contact__title {
+    font-size: 20px;
+}
+
+.contact__files-button {
+    font-size: 20px;
+    padding: 1vh 20px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+.return__interaction {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.contact__button {
+    border: none;
+    background-color: transparent;
+    color: var(--tg-theme-destructive-text-color);
+}
+
+.contact__button-value {
+    width: 20px;
+    fill: var(--tg-theme-accent-text-color);
+}
+
+.contact__top-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact__link {
+    color: var(--tg-theme-text-color);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__subtitle {
+    margin-right: 1vw;
+    margin-top: 1vh;
+    font-size: 16px;
+    color: var(--tg-theme-subtitle-text-color);
+}
+
+.contact__info {
+    font-size: 18px;
+    color: var(--tg-theme-text-color);
+}
+
+.task__description {
+    font-size: 16px;
+    margin-bottom: 1.5vh;
+}
+
+.task__description-text {
+    font-size: 18px;
+    margin-top: 1vh;
+}
+
+.task__files-form {
+    width: auto;
+    text-align: center;
+}
+
+.task__files-button {
+    font-size: 20px;
+    padding: 1vh 20px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-button-text-color);
+    background-color: var(--tg-theme-button-color);
+    color: var(--tg-theme-button-text-color);
+}
+
+.task__interaction {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+
+.task__delete-button {
+    font-size: 18px;
+    padding: .5vh 10px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-destructive-text-color);
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-destructive-text-color);
+}
+
+.task__edit-button {
+    font-size: 18px;
+    padding: .5vh 10px;
+    border-radius: 10px;
+    border-color: var(--tg-theme-accent-text-color);
+    background-color: var(--tg-theme-secondary-bg-color);
+    color: var(--tg-theme-accent-text-color);
+}

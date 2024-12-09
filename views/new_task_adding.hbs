@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/new_mainStyle.css">
+    <link rel="stylesheet" href="/css/new_addingStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__logo">CRM AI Mini App</div>
+        </div>
+    </header>
+
+    <section class="main-list">
+        <div class="main-list__container">
+            <form action="/add-task/{{userId}}/{{taskId}}" method="post" class="main__form adding">
+
+                <label for="title" class="adding__label">Название</label>
+                <input id="title" type="text" class="adding__input" placeholder="Название или тема задачи" name="title" value="{{taskInfo.title}}">
+
+                <label for="description" class="adding__label">Описание</label>
+                <textarea id="description" class="adding__input" placeholder="Описание задачи" name="description">{{taskInfo.description}}</textarea>
+                
+                <label for="title" class="adding__label">Приоритет</label>
+                <input type="text" class="adding__input" placeholder="Приоритет выполнения" name="priority" value="{{taskInfo.priority}}">
+                
+                <label for="status" class="adding__label">Статус</label>
+                <input id="status" type="text" class="adding__input" placeholder="Статус выполнения задачи" name="status" value="{{taskInfo.status}}">
+                
+                <label for="due_time" class="adding__label">Дата и время дедлайна:</label>
+                <input class="adding__date" type="datetime-local" name="due_time" value="{{dateFormat taskInfo.due_date "YYYY-MM-DD"}}T{{dateFormat taskInfo.due_date "HH:mm"}}">
+                
+                <label for="username" class="adding__label">Username</label>
+                <input id="username" type="text" name="contact" placeholder="Username контакта" class="adding__input" value="{{contact.username}}">
+                
+                <input type="submit" value="Сохранить задачу" class="adding__button">
+            </form>
+        </div>
+    </section>
+</body>
+</html>
