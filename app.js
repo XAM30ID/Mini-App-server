@@ -11,7 +11,6 @@ const urlencodedParser = express.urlencoded({ extended: true });
 
 
 const pool = mysql.createPool({
-    connectionLimit: 5,
     host: "2hb5f.h.filess.io",
     user: "MySqlServ_atroompast",
     database: "MySqlServ_atroompast", 
