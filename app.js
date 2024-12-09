@@ -132,9 +132,10 @@ app.get("/meet/:meetId/:userId", urlencodedParser, function (req, res) {
 
 
 
-app.get("/add-task/:userId/:taskId", urlencodedParser, function (req, res) {
+app.get("/add-task/:userId/:taskId/:contactId", urlencodedParser, function (req, res) {
     const task_id1 = req.params.taskId;
     const user_id = req.params.userId;
+    const contact_id = req.params.contactId;
 
     pool.query(BD_queries.all_tasks, [user_id], function (err, allTasks) {
         if (err) return console.log(err);
@@ -148,12 +149,24 @@ app.get("/add-task/:userId/:taskId", urlencodedParser, function (req, res) {
         else {
             task_id = task_id1;
         };
+
         pool.query(BD_queries.task_info_1, [user_id, task_id], function (err, task_info) {
             if (err) return console.log(err);
-            if (task_info.length == 0) {
+            if (task_info.length == 0 && contact_id.length == 0) {
                 res.render("new_task_adding.hbs", {
                     userId: user_id,
                     taskId: task_id
+                });
+            }
+
+            else if (task_info.length == 0 && contact_id.length > 0) {
+                pool.query(BD_queries.task_info_2, [user_id, contact_id], function (err, task_contact) {
+                    console.log
+                    res.render("new_task_adding.hbs", {
+                        userId: user_id,
+                        taskId: task_id,
+                        contact: task_contact[0]
+                    });
                 });
             }
 
@@ -234,7 +247,6 @@ app.get("/add-contact/:userId/:contactId", urlencodedParser, function (req, res)
 
     pool.query(BD_queries.all_contacts, [user_id], function (err, allContacts) {
         if (err) return console.log(err);
-        console.log(allContacts);
         var contact_id;
         if (allContacts.length == 0) {
             contact_id = 1;
@@ -424,6 +436,6 @@ app.get("/delete-contact/:userId/:contactId", urlencodedParser, function (req, r
 });
 
 
-app.listen(port, function () {
+app.listen(3000, function () {
     console.log("Сервер запущен на http://localhost:3000");
 });

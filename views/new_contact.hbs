@@ -73,7 +73,16 @@
             </div>
 
             <div class="contact__tasks-container">
-                <div class="contact__tasks-title">Задачи:</div>
+                <div class="contact__top-part">
+                    <div class="contact__tasks-title">Задачи:</div>
+                    <form action="/add-task/{{userId}}/new/{{contactInfo.contact_id}}" method="get" class="contact__edit-form">
+                        <button class="contact__button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="contact__button-value" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>                       
+                        </button>
+                    </form>
+                </div>
                 {{#each tasks}}
                     <a href="/task/{{this.task_id}}/{{this.user_id}}" class="contact__task task">
                         <div class="task__part">

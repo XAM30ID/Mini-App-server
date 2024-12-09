@@ -66,7 +66,7 @@
 .contact__links {
     margin-top: 5px;
     display: block;
-    fill: var(--tg-theme-text-color);
+    color: var(--tg-theme-text-color);
 }
 
 .contact__notes-text {
@@ -139,4 +139,9 @@
 
 .task__part:last-child {
     color: var(--tg-theme-subtitle-text-color);
+}
+
+.contact__top-part {
+    display: flex;
+    justify-content: space-between;
 }
